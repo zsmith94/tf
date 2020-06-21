@@ -1,5 +1,5 @@
 resource "vultr_firewall_group" "web_firewall" {
-    description = "web firewall"
+    description = "web_firewall"
 }
 
 resource "vultr_firewall_rule" "web_firewall_rule" {

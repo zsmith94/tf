@@ -1,6 +1,6 @@
-data "vultr_ssh_key" "ubuntu" {
+data "vultr_ssh_key" "terraform_key" {
     filter {
         name = "name"
-        values = ["ubuntu"]
+        values = ["terraform_key"]
     }
 }

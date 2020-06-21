@@ -19,5 +19,5 @@ variable "hostname" {
 variable "ssh_key" {
     description = "Name of the SSH key"
     type = string
-    default = "windows key"
+    default = "terraform_key"
 }
