@@ -1,10 +1,14 @@
 #!/bin/bash
-dnf update -y
-dnf install automake cmake git gcc gcc-c++ java-1.8.0-openjdk-headless libatomic libdb-devel lua-devel make mariadb-devel openssl-devel
 
-# MySQL setup goes here
-  MYSQL_ROOT_PASSWORD='Password@123'
-  MYSQL=$(grep 'temporary password' /var/log/mysqld.log | awk '{print $11}')
+# install mysql
+sudo yum install mysql-server -y
+sudo systemctl enable mysqld
+sudo systemctl start mysqld
+
+# mysql hardening / setup
+
+  MYSQL_ROOT_PASSWORD=$1
+  MYSQL=$2
 
   SECURE_MYSQL=$(expect -c "
 
@@ -39,13 +43,4 @@ dnf install automake cmake git gcc gcc-c++ java-1.8.0-openjdk-headless libatomic
 
   echo $SECURE_MYSQL
 
-# End MySQL setup, continue
-
-mkdir -p /etc/swgemu
-cd /etc/swgemu
-git clone http://review.swgemu.com/Core3
-cd MMOCoreORB
-make -j8
-
-
-
+# end MySQL setup

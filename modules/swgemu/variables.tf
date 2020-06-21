@@ -21,3 +21,9 @@ variable "ssh_key" {
     type = string
     default = "terraform_key"
 }
+
+variable "new_password" {
+    description = "new mysql password"
+    type = "string"
+    default = "new"
+}
