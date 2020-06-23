@@ -1,9 +1,13 @@
 #!/bin/bash
 
+# install mysql community release
+wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+rpm -ivh mysql-community-release-el7-5.noarch.rpm
+
 # install mysql
-sudo yum install mysql-server -y
-sudo systemctl enable mysqld
-sudo systemctl start mysqld
+yum install mysql-server -y
+systemctl enable mysqld
+systemctl start mysqld
 
 # mysql hardening / setup
 

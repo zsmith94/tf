@@ -24,6 +24,6 @@ variable "ssh_key" {
 
 variable "new_password" {
     description = "new mysql password"
-    type = "string"
+    type = string
     default = "new"
 }
