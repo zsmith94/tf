@@ -31,5 +31,5 @@ variable "new_password" {
 varialbe "snapshot" {
     description = "snapshot on vultr"
     type = string
-    default = "3485ef19ecbb8"
+    default = "3015ef4e4e613"
 }
