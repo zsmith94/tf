@@ -15,7 +15,7 @@ resource "vultr_server" "swgemu" {
     ssh_key_ids = ["${data.vultr_ssh_key.terraform_key.id}"]
     firewall_group_id = vultr_firewall_group.swgemu_firewall.id
     # need to update snapshot variable in vars.tf once created
-    # snapshot_id = var.snapshot
+    snapshot_id = var.snapshot
     auto_backup = true
     ddos_protection = true
 
@@ -41,13 +41,7 @@ resource "vultr_server" "swgemu" {
     # add ex permissions, run all scripts
     provisioner "remote-exec" {
         inline = [
-            "chmod +x /tmp/*.sh",
-            "echo 'permissions altered for scripts in /tmp...'",
-            "bash /tmp/pkg_setup.sh",
-            "echo 'packages installed, now setting up mysql...'",
-            "bash /tmp/mysql_setup.sh {vultr_server.swgemu.default_password} {var.new_password}",
-            "echo 'mysql set up, now running swg setup...'",
-            "bash /tmp/swg_setup.sh",
+            "bash /tmp/swg-sql.sh",
             "echo 'swg setup complete...'"
         ]
 

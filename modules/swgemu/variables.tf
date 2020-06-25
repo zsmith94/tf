@@ -27,3 +27,9 @@ variable "new_password" {
     type = string
     default = "new"
 }
+
+varialbe "snapshot" {
+    description = "snapshot on vultr"
+    type = string
+    default = "3485ef19ecbb8"
+}
